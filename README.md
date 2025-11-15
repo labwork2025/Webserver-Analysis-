@@ -25,7 +25,7 @@ My investigation confirmed that at least four of the top 10 scanners were **know
 First, I had to sift through the noise. I ran a `tshark` command to read all 3.9GB of traffic and generate a sorted list of the Top 10 most frequent source IPs.
 
 **Evidence: Top 10 "Noisiest" IPs**
-![tshark output showing the Top 10 IPs by hit count](PASTE_LINK_FOR_SCREENSHOT_993_HERE)
+![tshark output showing the Top 10 IPs by hit count](evidence/Screenshot (993).png)
 
 This first step immediately narrowed my focus. The top two IPs (`203.161.44.208` and `203.161.44.39`) were clearly the main subjects, with far more hits than any others.
 
