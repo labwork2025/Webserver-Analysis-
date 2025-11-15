@@ -25,7 +25,7 @@ My investigation confirmed that at least four of the top 10 scanners were **know
 First, I had to sift through the noise. I ran a `tshark` command to read all 3.9GB of traffic and generate a sorted list of the Top 10 most frequent source IPs.
 
 **Evidence: Top 10 "Noisiest" IPs**
-![tshark output showing the Top 10 IPs by hit count](PASTE_LINK_FOR_SCREENSHOT_993_HERE)
+![tshark output showing the Top 10 IPs by hit count](https://raw.githubusercontent.com/labwork2025/Webserver-Analysis/main/evidence/Screenshot%20(993).png)
 
 This first step immediately narrowed my focus. The top two IPs (`203.161.44.208` and `203.161.44.39`) were clearly the main subjects, with far more hits than any others.
 
@@ -38,11 +38,11 @@ My next step was to find out if these "noisy" IPs were just harmless scanners or
 This step confirmed that this PCAP was not just "scans and probes" but contained active attacks from known-malicious sources.
 
 * **Suspect 1 (`203.161.44.208`):** **Confirmed Malicious.** Flagged by Fortinet for "Malware."
-    ![VirusTotal report for 203.161.44.208](PASTE_LINK_FOR_SCREENSHOT_994_HERE)
+    ![VirusTotal report for 203.161.44.208](https://raw.githubusercontent.com/labwork2025/Webserver-Analysis/main/evidence/Screenshot%20(994).png)
 * **Suspect 3 (`104.156.155.10`):** **Confirmed Malicious.** 6 vendors flagged this IP for "Malicious" and "Phishing."
-    ![VirusTotal report for 104.156.155.10](PASTE_LINK_FOR_SCREENSHOT_996_HERE)
+    ![VirusTotal report for 104.156.155.10](https://raw.githubusercontent.com/labwork2025/Webserver-Analysis/main/evidence/Screenshot%20(996).png)
 * **Suspect 4 (`79.124.62.126`):** **Confirmed HIGHLY Malicious.** 13 vendors flagged this IP for "Malicious," "Phishing," and "Malware."
-    ![VirusTotal report for 79.124.62.126](PASTE_LINK_FOR_SCREENSHOT_999_HERE)
+    ![VirusTotal report for 79.124.62.126](https://raw.githubusercontent.com/labwork2025/Webserver-Analysis/main/evidence/Screenshot%20(999).png)
 
 ---
 
@@ -51,7 +51,7 @@ This step confirmed that this PCAP was not just "scans and probes" but contained
 Now that I'd confirmed the #1 attacker (`203.161.44.208`) was malicious, I performed a deep dive to see *what* it was scanning for. I ran a new `tshark` command to filter for *only* that IP and find its Top 10 destination ports.
 
 **Evidence: Top 10 Ports Scanned by the Attacker**
-![tshark output showing the top 10 ports scanned by the #1 attacker](PASTE_LINK_FOR_SCREENSHOT_1004_HERE)
+![tshark output showing the top 10 ports scanned by the #1 attacker](https://raw.githubusercontent.com/labwork2025/Webserver-Analysis/main/evidence/Screenshot%20(1004).png)
 
 This output shows a comprehensive, automated scan for the most common, high-value vulnerabilities:
 * **Port 80 (HTTP):** Standard web server scan.
